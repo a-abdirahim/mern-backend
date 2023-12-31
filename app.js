@@ -36,15 +36,10 @@ app.use("/api/v1/products", productRouter);
 app.use("/api/v1/products/subCategory", subCategoryRouter);
 app.use("/api/v1/products/category", categoryRouter);
 
-app.use(express.static(path.join(__dirname, "./Client/dist")));
 app.use(
   "/public/uploads",
   express.static(path.join(__dirname, "public/uploads"))
 );
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./Client/dist/index.html"));
-});
 
 app.all("*", (req, res, next) => {
   res.status(404).json({
